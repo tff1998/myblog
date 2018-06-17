@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,118 +16,16 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<!--顶部-->
-		<div class="row">
-			<nav class="navbar navbar-default navbar-fixed-top">
-				<div class="container-fluid">
-					<!--导航-->
-					<div class="col-md-6">
-						<ul class="nav nav-tabs myblog-boder">
-							...
-							<li role="presentation" class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-									Dropdown <span class="caret"></span>
-								</a>
-								<ul class="dropdown-menu">
-									...
-								</ul>
-							</li>
-							...
-						</ul>
-					</div>
-					<!--搜索框-->
-					<div class="col-md-3">
-						<form class="navbar-form navbar-left" role="search">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Search">
-							</div>
-							<button type="submit" class="btn btn-default">Submit</button>
-						</form>
-					</div>
-					<!--状态栏-->
-					<div class="col-md-3" align="center">
-						<div class="dropdown">
-							<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-								Dropdown
-								<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</div>
-	
-	
+		<jsp:include page="${pageContext.request.contextPath}/WEB-INF/jsp/common/head.jsp"></jsp:include>
 		<!--content-->
-		<div class="row" style="margin-top: 50px ;">
+		<!--中部-->
+		<div class="row content" style="">
 			<!--博文列表-->
-			<div class="col-md-9">
-				<ul class="list-group">
-						<li class="list-group-item">
-							<h5>标题标题</h1>
-							<div class="container-fluid">
-								<div class="col-md-4">
-									<img src="http://v3.bootcss.com/assets/img/tanzhouedu.jpg" style="width:100px;height:100px;"/>
-								</div>
-								<div class="col-md-8">
-									<img src="http://v3.bootcss.com/assets/img/tanzhouedu.jpg" style="width:100px;height:100px;"/>
-								</div>
-							</div>
-						</li>
-	<li class="list-group-item">
-							<h4>标题标题</h1>
-							<div class="container-fluid">
-								
-	
-								<div class="col-md-4" style="height: 200px;">
-									<img src="http://v3.bootcss.com/assets/img/tanzhouedu.jpg" />
-								</div>
-								<div class="col-md-8">
-									<img src="http://v3.bootcss.com/assets/img/tanzhouedu.jpg" />
-								</div>
-							</div>
-						</li>	<li class="list-group-item">
-							<h4>标题标题</h1>
-							<div class="container-fluid">
-								
-	
-								<div class="col-md-4" style="height: 200px;">
-									<img src="http://v3.bootcss.com/assets/img/tanzhouedu.jpg" />
-								</div>
-								<div class="col-md-8">
-									<img src="http://v3.bootcss.com/assets/img/tanzhouedu.jpg" />
-								</div>
-							</div>
-						</li>	<li class="list-group-item">
-							<h4>标题标题</h1>
-							<div class="container-fluid">
-								
-	
-								<div class="col-md-4" style="height: 200px;">
-									<img src="http://v3.bootcss.com/assets/img/tanzhouedu.jpg" />
-								</div>
-								<div class="col-md-8">
-									<img src="http://v3.bootcss.com/assets/img/tanzhouedu.jpg" />
-								</div>
-							</div>
-						</li>
-						
-						<li class="list-group-item">免费 Window 空间托管</li>
-						<li class="list-group-item">图像的数量</li>
-						<li class="list-group-item">24*7 支持</li>
-						<li class="list-group-item">每年更新成本</li>
-						
-				</ul>
+			<div class="col-md-8" id="article">
+				<jsp:include page="${pageContext.request.contextPath}/WEB-INF/jsp/article/showArticle.jsp"></jsp:include>
 			</div>
 			<!--推荐博文及其他-->
-			<div class="col-md-3 col-md-offset-9" style="position: fixed;">
+			<div class="col-md-4 col-md-offset-8" style="position: fixed;">
 				<ul class="list-group">
 					<li class="list-group-item">免费域名注册</li>
 					<li class="list-group-item">免费 Window 空间托管</li>
@@ -137,5 +36,8 @@
 			</div>
 		</div>
 </div>
+<script>  
+!function(){function n(n,e,t){return n.getAttribute(e)||t}function e(n){return document.getElementsByTagName(n)}function t(){var t=e("script"),o=t.length,i=t[o-1];return{l:o,z:n(i,"zIndex",-1),o:n(i,"opacity",.5),c:n(i,"color","0,0,0"),n:n(i,"count",99)}}function o(){a=m.width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth,c=m.height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight}function i(){r.clearRect(0,0,a,c);var n,e,t,o,m,l;s.forEach(function(i,x){for(i.x+=i.xa,i.y+=i.ya,i.xa*=i.x>a||i.x<0?-1:1,i.ya*=i.y>c||i.y<0?-1:1,r.fillRect(i.x-.5,i.y-.5,1,1),e=x+1;e<u.length;e++)n=u[e],null!==n.x&&null!==n.y&&(o=i.x-n.x,m=i.y-n.y,l=o*o+m*m,l<n.max&&(n===y&&l>=n.max/2&&(i.x-=.03*o,i.y-=.03*m),t=(n.max-l)/n.max,r.beginPath(),r.lineWidth=t/2,r.strokeStyle="rgba("+d.c+","+(t+.2)+")",r.moveTo(i.x,i.y),r.lineTo(n.x,n.y),r.stroke()))}),x(i)}var a,c,u,m=document.createElement("canvas"),d=t(),l="c_n"+d.l,r=m.getContext("2d"),x=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(n){window.setTimeout(n,1e3/45)},w=Math.random,y={x:null,y:null,max:2e4};m.id=l,m.style.cssText="position:fixed;top:0;left:0;z-index:"+d.z+";opacity:"+d.o,e("body")[0].appendChild(m),o(),window.onresize=o,window.onmousemove=function(n){n=n||window.event,y.x=n.clientX,y.y=n.clientY},window.onmouseout=function(){y.x=null,y.y=null};for(var s=[],f=0;d.n>f;f++){var h=w()*a,g=w()*c,v=2*w()-1,p=2*w()-1;s.push({x:h,y:g,xa:v,ya:p,max:6e3})}u=s.concat([y]),setTimeout(function(){i()},100)}();  
+</script>  
 </body>
 </html>

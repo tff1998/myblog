@@ -1,18 +1,91 @@
+*{margin: 0px;padding: 0px;border: 0px}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    margin:0;
+    padding:0;
+}
+/*背景*/
+body{
+	background-color: #eee;
+}
+/*字体白手工具类*/
+.font-white{
+	color:white;
+}
+/*导航背景*/
+.bg {
+/*	background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url(http://localhost:8081/json/bg.jpg);	*/ 
+		background-color: #444;
+}
+.dropdown-toggle{
+	color: white;
+}
+/*导航鼠标悬浮*/
+ .navbar .nav > li .dropdown-menu {  
+        margin: 0;  
+}  
+.navbar .nav > li:hover .dropdown-menu {  
+        display: block;  
+}  
 .myblog-boder{
 	border-bottom-width: 0px;
 }
-/* .row [class*="col-"]{
 
-margin-bottom: -99999px;
-
-padding-bottom: 99999px;
-
+.content{
 }
-
-
-
-.row{
-
-overflow: hidden; 
-
-} */
+/*博文列表*/
+.article_List{
+	list-style:none;
+}
+.article{
+	/*position: absolute;*/
+	/*background-color: #e2ddc7;*/
+	/*z-index: 1;*/
+}
+/*单条博文*/
+.article_row{
+	margin-left: 50px;
+	margin-top: 20px;
+	margin-right: 50px;
+	padding: 5px;
+	border:1px solid #f00;
+	background-color: white;
+}
+.article_img{
+	width:150px;height:120px;
+	/*margin-left: 40px;*/
+}
+.article_img_div{
+	float: right;
+}
+.article_foot_articleCatName{
+	width: 40%;
+	display:inline;
+	position:absolute;
+	bottom: 0;  
+}
+.article_foot_created{
+	width: 40%;
+	right: 0px;
+	display:inline;
+	position:absolute;
+	bottom: 0;  
+}
+/*分页插件*/
+.pagination{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+/*同行div等高*/
+.row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}

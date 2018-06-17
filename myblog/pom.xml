@@ -13,7 +13,7 @@
 		<mybatis.paginator.version>1.2.15</mybatis.paginator.version>
 		<mysql.version>5.1.32</mysql.version>
 		<slf4j.version>1.6.4</slf4j.version>
-		<jackson.version>2.4.2</jackson.version>
+		<jackson.version>2.5.3</jackson.version>
 		<druid.version>1.0.9</druid.version>
 		<httpclient.version>4.3.5</httpclient.version>
 		<jstl.version>1.2</jstl.version>
@@ -35,8 +35,16 @@
 		<freemarker.version>2.3.23</freemarker.version>
 		<quartz.version>2.2.2</quartz.version>
 	</properties>
-	<!-- Mybatis -->
+	
+	
 	<dependencies>
+			<!-- https://mvnrepository.com/artifact/com.github.stuxuhai/jpinyin -->
+			<dependency>
+			    <groupId>com.github.stuxuhai</groupId>
+			    <artifactId>jpinyin</artifactId>
+			    <version>1.1.8</version>
+			</dependency>
+			<!-- Mybatis -->
 			<dependency>
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis</artifactId>
@@ -70,6 +78,18 @@
 				<version>${druid.version}</version>
 			</dependency>
 			<!-- Spring -->
+			<dependency>  <!-- 单元测试 -->
+			    <groupId>org.springframework</groupId>  
+			    <artifactId>spring-test</artifactId>  
+			    <version>3.1.1.RELEASE</version>  
+			</dependency>
+						<!-- 单元测试 -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
@@ -105,6 +125,12 @@
 				<artifactId>spring-context-support</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<!-- Jackson Json处理工具包 -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
 			<!-- JSP相关 -->
 			<dependency>
 				<groupId>jstl</groupId>
@@ -123,14 +149,52 @@
 				<version>${jsp-api.version}</version>
 				<scope>provided</scope>
 			</dependency>
-			<!-- 文件上传组件 -->
+			<!-- 文件上传组件 &&Ueditor-->
 			<dependency>
 				<groupId>commons-fileupload</groupId>
 				<artifactId>commons-fileupload</artifactId>
 				<version>${commons-fileupload.version}</version>
 			</dependency>
+			<dependency>
+		        <groupId>org.json</groupId>
+		        <artifactId>json</artifactId>
+		        <version>20140107</version>
+		    </dependency>
+		    <dependency>
+		          <groupId>commons-io</groupId>
+		          <artifactId>commons-io</artifactId>
+		          <version>2.2</version>
+      		</dependency>
+			<dependency>
+			    <groupId>commons-codec</groupId>
+			    <artifactId>commons-codec</artifactId>
+			    <version>1.9</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baidu</groupId>
+				<artifactId>ueditor</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<!-- fastdfsClient -->
+			<dependency>
+				<groupId>fastdfs_client</groupId>
+				<artifactId>fastdfs_client</artifactId>
+				<version>1.25</version>
+			</dependency>
+
 	</dependencies>
   <build>
+  <!-- 解决xml被Maven漏掉的情况 -->
+   		 <resources>  
+            <resource>  
+                <directory>src/main/java</directory>  
+                <includes>  
+                    <include>**/*.properties</include>  
+                    <include>**/*.xml</include>  
+                </includes>  
+                <filtering>false</filtering>  
+            </resource>  
+        </resources>  
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<!-- tomcat插件 -->
@@ -139,7 +203,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
 					<path>/</path>
-					<port>8080</port>
+					<port>8081</port>
 				</configuration>
 			</plugin>
 			<!-- java编译插件 -->
