@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.tangff.mapper.ArticleCatMapper">
+	<!-- 关联查询，查询子类目 -->
+	<resultMap type="top.tangff.common.pojo.ArticleCatVo" id="ArticleCatVo">
+		<id property="id" column="id" />
+		<result property="code" column="code"/>
+		<result property="url" column="url"/>
+		<result property="name" column="name"/>
+		<collection property="chilren" ofType="top.tangff.pojo.ArticleCat"
+			column="id" select="getArtCatByParentId">
+		</collection>
+	</resultMap>
+	<select id="getAllArtiCat" resultMap="ArticleCatVo">
+		SELECT * 
+		FROM article_cat
+		WHERE is_parent = 1
+	</select>
+	
+	<!-- 查询一级类目根据父ID -->
+	<select id="getArtCatByParentId" resultType="top.tangff.pojo.ArticleCat" parameterType="Long">
+		SELECT id, parent_id, code, url, name
+		FROM article_cat
+		<if test="_parameter==null">
+			WHERE parent_id IS #{id}
+		</if>
+		<if test="_parameter!=null">
+			WHERE parent_id = #{id}
+		</if>
+	</select>
+	
+	<!-- 增加类目 -->
+	<insert id="addArtiCat" parameterType="top.tangff.pojo.ArticleCat">
+		INSERT INTO article_cat(parent_id, code, url, name, is_parent) 
+		VALUES(#{parent_id},#{code},#{url},#{name},#{is_parent})
+	</insert>
+</mapper>
