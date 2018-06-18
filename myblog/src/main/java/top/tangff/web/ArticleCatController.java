@@ -29,7 +29,7 @@ public class ArticleCatController {
 		return BlogResult.ok(null);
 	}
 	
-	//获得某一级目录根据父目录Id，默认值为0（即查出所有的顶级目录）
+	//获得某一级目录根据父目录Id，默认值为-1（即查出所有的顶级目录）
 	@RequestMapping("articleCat/getArtCatByParentId")
 	@ResponseBody
 	public BlogResult getArtCatByParentId(@RequestParam(defaultValue="-1") Long parentId) {
@@ -41,8 +41,4 @@ public class ArticleCatController {
 	
 	
 	//以下均作为jsp跳板
-	@RequestMapping("article/writeArticle")
-	public String writeArticle() {
-		return "article/writeArticle";
-	}
 }

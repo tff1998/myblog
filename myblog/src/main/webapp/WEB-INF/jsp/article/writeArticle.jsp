@@ -9,13 +9,13 @@
 <html>
 <head>
   <meta charset="utf-8">
-	<link href="../../../css/bootstrap.css"  rel="stylesheet"/>
-	<link href="../../../css/myblog.css"  rel="stylesheet"/>
-	<script src="../../../js/jquery.min.js" type="text/javascript">
+	<link href="<%=basePath%>css/bootstrap.css"  rel="stylesheet"/>
+	<link href="<%=basePath%>css/myblog.css"  rel="stylesheet"/>
+	<script src="<%=basePath%>js/jquery.min.js" type="text/javascript">
 	</script>
-	<script src="../../../js/bootstrap.js" type="text/javascript">
+	<script src="<%=basePath%>js/bootstrap.js" type="text/javascript">
 	</script>
-	<script src="../../../js/myblog.js" type="text/javascript">
+	<script src="<%=basePath%>js/myblog.js" type="text/javascript">
 	</script>
 	<script src="<%=basePath%>/ueditor/ueditor.config.js" type="text/javascript">
 	</script>
@@ -55,6 +55,7 @@ $(function(){
 			alert("该选项不可选，请重新选择")
 			$(".alert").alert("该选项不可选，请重新选择")  
 		}else{
+			$("#twoLevelSelect").empty();
 			ajaxGetArticleCat("twoLevelSelect",options.val());
 		}
 	});
@@ -68,7 +69,7 @@ $(function(){
 			<div class="row" style="position: relative;">
 					<div style="width: 70%;position: absolute;margin: 0 auto;top: 0; left: 0; bottom: 0; right: 0; ">
 															 <!--博文提交表单-->
-					    <form action="<%=basePath%>article/add">
+					    <form action="<%=basePath%>article/addArticle" method="post">
 								<div class="input-group" style="position: relative;">
 									<span class="input-group-addon" id="sizing-addon2">标题</span>
 									<input name="title" type="text" class="form-control" placeholder="Title" aria-describedby="sizing-addon2">

@@ -12,7 +12,8 @@ public class Article implements Serializable{
     private Long cid;//类目Id
  
     private String title;
-    
+    private String image;
+    private String head;
     private Date created;
 
     private Date updated;
@@ -20,7 +21,23 @@ public class Article implements Serializable{
     private String content;
 
    
-    public Long getId() {
+    public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getHead() {
+		return head;
+	}
+
+	public void setHead(String head) {
+		this.head = head;
+	}
+
+	public Long getId() {
         return id;
     }
 

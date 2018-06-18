@@ -15,9 +15,10 @@
 		SELECT * 
 		FROM article_cat
 		WHERE is_parent = 1
+		ORDER BY id
 	</select>
 	
-	<!-- 查询一级类目根据父ID -->
+	<!-- 查询二级类目根据父ID -->
 	<select id="getArtCatByParentId" resultType="top.tangff.pojo.ArticleCat" parameterType="Long">
 		SELECT id, parent_id, code, url, name
 		FROM article_cat
@@ -27,6 +28,7 @@
 		<if test="_parameter!=null">
 			WHERE parent_id = #{id}
 		</if>
+		ORDER BY id
 	</select>
 	
 	<!-- 增加类目 -->
@@ -34,4 +36,11 @@
 		INSERT INTO article_cat(parent_id, code, url, name, is_parent) 
 		VALUES(#{parent_id},#{code},#{url},#{name},#{is_parent})
 	</insert>
+	
+	<select id="getArtCatIdsByParentId" parameterType="Long" resultType="Long">
+		SELECT a2.id
+		FROM article_cat a1 INNER JOIN article_cat a2
+		ON a1.id = a2.parent_id
+		WHERE a1.id = #{id}
+	</select>
 </mapper>

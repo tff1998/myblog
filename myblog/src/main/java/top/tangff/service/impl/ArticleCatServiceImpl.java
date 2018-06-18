@@ -13,6 +13,11 @@ import top.tangff.service.ArticleCatService;
 public class ArticleCatServiceImpl implements ArticleCatService {
 	@Autowired
 	ArticleCatMapper mapper;
+	
+	
+	/**
+	 得到所有的类目，填充顶部导航
+	 */
 	@Override
 	public BlogResult getAllArtiCat() {
 		// TODO Auto-generated method stub
@@ -30,6 +35,9 @@ public class ArticleCatServiceImpl implements ArticleCatService {
 		// TODO Auto-generated method stub
 		
 	}
+	/**
+	 * 根据id获得类目，用于写博文是动态选择类目
+	 */
 	@Override
 	public BlogResult getArtCatByParentId(Long parentId) {
 		List<ArticleCat> artiCatList = null;

@@ -12,12 +12,9 @@ public class ArticleVo {
     private String articleCatName;
  
     private String title;
-    
+    private String image;
+    private String head;
     private Date created;
-
-    private Date updated;
-
-    private String content;
 
 	public Long getId() {
 		return id;
@@ -68,20 +65,21 @@ public class ArticleVo {
 		this.created = created;
 	}
 
-	public Date getUpdated() {
-		return updated;
+	public String getImage() {
+		return image;
 	}
 
-	public void setUpdated(Date updated) {
-		this.updated = updated;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
-	public String getContent() {
-		return content;
+	public String getHead() {
+		return head;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setHead(String head) {
+		this.head = head;
 	}
+	
     
 }

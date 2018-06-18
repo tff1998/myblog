@@ -27,7 +27,6 @@
 							<script>
 							//动态获得导航条
 							$(function(){
-								// alert("sucess")
 								$.ajax({  
 									type:'get',  
 									url:'<%=basePath%>articleCat/getAllArtiCat',  
@@ -36,20 +35,22 @@
 									dataType:'json',  
 									success:function(data){  
 										//遍历大类别
+										
 										if(data.status==200)
 											$.each(data.data,function(n,item){
 												var temp1 = `
 												           <li role="presentation" class="dropdown">
-												           	<a class="dropdown-toggle" data-toggle="dropdown" href="`+item.url+`" role="button" aria-haspopup="true" aria-expanded="false">
+												           	<a class="dropdown-toggle" data-toggle="dropdown" href="<%=basePath%>article/redirectToHome?ArtilceCatId=`+item.id+`" role="button" aria-haspopup="true" aria-expanded="false">
 												           		`+item.name+`<span class="caret"></span>
 												           	</a>
 												           	<ul class="dropdown-menu">`;
 												var temp2 = "";
 												<!--遍历小类别-->
 												$.each(item.chilren,function(m,subitem){
-														temp2 += `<li><a href="`+subitem.url+`">`+subitem.name+`</a></li>`;
+														temp2 += `<li><a href="<%=basePath%>article/redirectToHome?ArtilceCatId=`+subitem.id+`">`+subitem.name+`</a></li>`;
 												})
 												temp = temp1 + temp2 + `</ul></li>`;
+												
 												$("#headNav").append(temp);					 
 											}
 											)
@@ -76,11 +77,11 @@
 						<div style="float: right;">
 							<ul class="nav nav-tabs myblog-boder" id="headNav">
 								<c:if test="${sessionScope.user ==null}">
-										<li><a class="font-white" href="<%=basePath%>article/writeArticle">写博客</a></li>
+										<li><a class="font-white" href="<%=basePath%>article//writeArticle">写博客</a></li>
 										<li><a class="font-white" href="#">个人信息</a></li>
 								</c:if>
 								<c:if test="${sessionScope.user !=null}">
-									<li><a href="article/writeArticle">写博客</a></li>
+									<li><a href="<%=basePath%>article/writeArticle">写博客</a></li>
 									<li><a href="#">个人信息</a></li>
 								</c:if>
 							<!--	<c:if test="${sessionScope.user ==null}">
@@ -92,8 +93,13 @@
 				</div>
 			</nav>
 </div>
+<!--占位div，因为顶部不占当前层次的空间-->
 <div class="row">
-		<div style="height:200px;margin-top:50px;">
+		<div style="height:50px;">
+		</div>
+</div>
+<div class="row">
+		<div style="height:200px;">
 		</div>
 </div>
 </body>

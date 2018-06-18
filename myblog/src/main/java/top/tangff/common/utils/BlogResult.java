@@ -1,5 +1,9 @@
 package top.tangff.common.utils;
 
+/**
+ * 该类用于相应普通ajax请求
+ *
+ */
 public class BlogResult {
     // 响应业务状态
     private Integer status;

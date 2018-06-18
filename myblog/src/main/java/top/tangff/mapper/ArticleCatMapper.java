@@ -8,4 +8,5 @@ public interface ArticleCatMapper {
 	List<ArticleCat> getAllArtiCat();
 	void addArtiCat(ArticleCat articleCat);
 	List<ArticleCat> getArtCatByParentId(Long parentId);
+	List<Long> getArtCatIdsByParentId(Long artilceCatId);
 }
